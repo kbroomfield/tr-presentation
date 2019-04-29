@@ -7,6 +7,8 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {MockService} from './core/mocks/mock.service';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {AuthInterceptor} from './core/interceptors/auth.interceptor';
+import {CoreModule} from './core/core.module';
+import {LandingModule} from './modules/landing/landing.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import {AuthInterceptor} from './core/interceptors/auth.interceptor';
     AppRoutingModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(MockService),
+    CoreModule,
+    LandingModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
